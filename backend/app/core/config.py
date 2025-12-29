@@ -31,6 +31,7 @@ class Settings(BaseSettings):
     # Security
     cors_origins: str = Field("*", validation_alias="CORS_ORIGINS")  # Comma-separated
     rate_limit: str = Field("100/minute", validation_alias="RATE_LIMIT")
+    jwt_secret_key: str = Field(..., validation_alias="JWT_SECRET_KEY")  # Required, no default
     
     # Monitoring
     sentry_dsn: str | None = Field(None, validation_alias="SENTRY_DSN")

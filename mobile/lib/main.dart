@@ -29,18 +29,18 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(const ProviderScope(child: FluentMindApp()));
+  runApp(const ProviderScope(child: SmartWasteApp()));
 }
 
-class FluentMindApp extends ConsumerWidget {
-  const FluentMindApp({super.key});
+class SmartWasteApp extends ConsumerWidget {
+  const SmartWasteApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(appRouterProvider);
 
     return MaterialApp.router(
-      title: 'FluentMind',
+      title: 'SmartWaste',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,

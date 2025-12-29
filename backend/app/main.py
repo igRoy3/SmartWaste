@@ -4,8 +4,10 @@ import logging
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
+from pathlib import Path
 
 from app.api.v1 import api_router
 from app.db.session import engine, Base
@@ -31,17 +33,23 @@ logger = get_logger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
-    logger.info(f"Starting FluentMind API in {settings.environment} mode")
+    logger.info(f"Starting SmartWaste API in {settings.environment} mode")
     Base.metadata.create_all(bind=engine)
     logger.info("Database tables initialized")
+    
+    # Create uploads directory
+    upload_dir = Path("uploads/garbage_photos")
+    upload_dir.mkdir(parents=True, exist_ok=True)
+    logger.info("Uploads directory created")
+    
     yield
     # Shutdown
-    logger.info("Shutting down FluentMind API")
+    logger.info("Shutting down SmartWaste API")
 
 
 app = FastAPI(
-    title="FluentMind Backend",
-    description="AI-powered language learning API",
+    title="SmartWaste Backend",
+    description="Smart Garbage Management System API",
     version="1.0.0",
     lifespan=lifespan,
     docs_url="/docs" if not settings.is_production else None,  # Disable docs in prod
@@ -119,12 +127,17 @@ async def global_exception_handler(request: Request, exc: Exception):
 # Include API routes
 app.include_router(api_router, prefix="/api/v1")
 
+# Mount static files for uploads
+upload_path = Path("uploads")
+if upload_path.exists():
+    app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
+
 
 @app.get("/")
 async def root():
     return {
         "status": "ok",
-        "service": "fluentmind-backend",
+        "service": "smartwaste-backend",
         "version": "1.0.0",
         "environment": settings.environment,
     }
