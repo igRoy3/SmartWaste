@@ -1,5 +1,6 @@
 from pydantic import BaseModel, ConfigDict
 from datetime import datetime
+from typing import Literal
 
 
 class UserRead(BaseModel):
@@ -7,6 +8,7 @@ class UserRead(BaseModel):
     uid: str
     email: str | None
     name: str | None
+    role: Literal["citizen", "admin", "collector"] = "citizen"
 
     model_config = ConfigDict(from_attributes=True)
 

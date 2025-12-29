@@ -1,7 +1,7 @@
 # Core
 fastapi>=0.115.0
 uvicorn[standard]>=0.32.0
-pydantic>=2.0
+pydantic[email]>=2.0
 pydantic-settings>=2.0
 python-dotenv>=1.0
 python-multipart>=0.0.6
@@ -23,6 +23,7 @@ slowapi>=0.1.9
 sentry-sdk[fastapi]>=1.39
 python-json-logger>=2.0
 gunicorn>=21.0
+PyJWT>=2.8.0
 
 # Testing
 pytest>=7.0

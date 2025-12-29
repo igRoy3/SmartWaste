@@ -7,7 +7,7 @@ def test_root_endpoint(client):
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "ok"
-    assert data["service"] == "fluentmind-backend"
+    assert data["service"] == "smartwaste-backend"
 
 
 def test_health_endpoint(client):
