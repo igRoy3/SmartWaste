@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../auth/auth_provider.dart';
 import '../../core/api/api_service.dart';
 import '../../core/models/garbage_report.dart';
+import '../../core/config/app_config.dart';
 
 final reportsProvider = FutureProvider<List<GarbageReport>>((ref) async {
   final apiService = ref.watch(apiServiceProvider);
@@ -169,7 +170,7 @@ class _ReportCard extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  'http://localhost:8000${report.photoUrl}',
+                  AppConfig.getImageUrl(report.photoUrl),
                   width: 80,
                   height: 80,
                   fit: BoxFit.cover,

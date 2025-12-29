@@ -1,4 +1,9 @@
 import pytest
+import os
+
+# Set JWT secret for testing BEFORE importing app
+os.environ['JWT_SECRET_KEY'] = 'test-secret-key-for-testing-only'
+
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker

@@ -2,11 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../models/user.dart';
 import '../models/garbage_report.dart';
+import '../config/app_config.dart';
 
 class ApiService {
   final Dio _dio;
   final FlutterSecureStorage _storage;
-  static const String _baseUrl = 'http://localhost:8000/api/v1';
   static const String _tokenKey = 'access_token';
 
   ApiService({
@@ -14,9 +14,9 @@ class ApiService {
     FlutterSecureStorage? storage,
   })  : _dio = dio ?? Dio(),
         _storage = storage ?? const FlutterSecureStorage() {
-    _dio.options.baseUrl = _baseUrl;
-    _dio.options.connectTimeout = const Duration(seconds: 30);
-    _dio.options.receiveTimeout = const Duration(seconds: 30);
+    _dio.options.baseUrl = AppConfig.apiBaseUrl;
+    _dio.options.connectTimeout = AppConfig.connectTimeout;
+    _dio.options.receiveTimeout = AppConfig.receiveTimeout;
 
     // Add interceptor to add auth token to requests
     _dio.interceptors.add(
