@@ -1,0 +1,29 @@
+# Core
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+pydantic>=2.0
+pydantic-settings>=2.0
+python-dotenv>=1.0
+python-multipart>=0.0.6
+
+# Database
+SQLAlchemy>=2.0
+psycopg2-binary>=2.9
+alembic>=1.13
+
+# Authentication
+firebase-admin>=6.0
+
+# AI/ML
+openai>=1.0
+httpx>=0.27
+
+# Security & Production
+slowapi>=0.1.9
+sentry-sdk[fastapi]>=1.39
+python-json-logger>=2.0
+gunicorn>=21.0
+
+# Testing
+pytest>=7.0
+pytest-asyncio>=0.21

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1064484953640",
+    "project_id": "fluentmind-6d476",
+    "storage_bucket": "fluentmind-6d476.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064484953640:android:e0b129ef845bdeea1e5f1d",
+        "android_client_info": {
+          "package_name": "com.fluentmind.fluentmind"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB3wB0HzY6bMqQQtGDSl90oUEfMATdfTs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
